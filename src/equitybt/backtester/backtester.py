@@ -9,7 +9,7 @@ import re
 import subprocess
 import sys
 from equitybt.dataexpression.dataexpression import DataExpression
-from equitybt.performance.tearsheet import write_tearsheet
+from equitybt.performance.compact_summary import write_compact_summary
 from equitybt.portfolio.weights import SIGNAL_COL, WEIGHT_COL
 from equitybt.strategy.alpha import Alpha
 from equitybt.strategy.strategy import Strategy
@@ -194,7 +194,7 @@ def save_backtest(strategy: Strategy, path: str | Path) -> Strategy:
             continue
         table.reset_index().to_parquet(path / f"{name}.parquet", index=False)
 
-    write_tearsheet(strategy, path / "tearsheet.html", strategy.results["book_size"])
+    write_compact_summary(strategy, path / "compact_summary.html", strategy.results["book_size"])
     strategy.run_path = str(path)
     return strategy
 

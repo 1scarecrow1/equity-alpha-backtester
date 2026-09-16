@@ -2,13 +2,13 @@
 
 End-to-end equity alpha research on daily data. You can write a signal as a formula, turn
 it into a cross-sectionally neutral book, simulate it with an explicit trading delay, and
-read the results in a dashboard or tearsheet.
+read the results in a compact summary or dashboard.
 
 ```
 formula  ->  signal  ->  weights  ->  exposures  ->  PnL  ->  report
-  DSL       constraints   neutralize   book size    delay    tearsheet
-            exit rules    decay        turnover     mark      dashboard
-                          truncate
+           constraints   neutralize   book size     delay   compact summary
+            exit rules    decay        turnover     mark     dashboard
+                         truncate
 ```
 
 ## Python setup
@@ -109,7 +109,7 @@ strategy = run_backtest(strategy, data=data, book_size=20e6)
 save_backtest(strategy, "runs/my_alpha")
 ```
 
-A run folder holds `config.json`, `summary.json`, `tearsheet.html`, and parquet tables for
+A run folder holds `config.json`, `summary.json`, `compact_summary.html`, and parquet tables for
 the source data, the per-name panel, the daily portfolio and the yearly aggregates. 
 
 ## Dashboard

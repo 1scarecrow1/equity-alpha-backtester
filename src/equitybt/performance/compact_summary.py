@@ -83,7 +83,7 @@ def _definition_list(summary: pd.Series) -> str:
     return f"<dl>{items}</dl>"
 
 
-def write_tearsheet(strategy, path: str | Path, book_size: float) -> Path:
+def write_compact_summary(strategy, path: str | Path, book_size: float) -> Path:
     path = Path(path)
     portfolio = strategy.portfolio.reset_index() if "date" not in strategy.portfolio else strategy.portfolio
     portfolio = portfolio.copy()

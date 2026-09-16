@@ -78,12 +78,12 @@ def test_a_run_folder_round_trips(run, tmp_path):
     written = sorted(path.name for path in (tmp_path / "reversal").iterdir())
 
     assert written == [
+        "compact_summary.html",
         "config.json",
         "df.parquet",
         "portfolio.parquet",
         "source_data.parquet",
         "summary.json",
-        "tearsheet.html",
         "yearly.parquet",
     ]
 
@@ -127,9 +127,9 @@ def test_the_sector_return_matrix_is_one_column_per_sector(run):
     assert np.isfinite(matrix.to_numpy()).all()
 
 
-def test_the_tearsheet_is_one_interactive_page(run, tmp_path):
+def test_the_compact_summary_is_one_interactive_page(run, tmp_path):
     save_backtest(run, tmp_path / "reversal")
-    html = (tmp_path / "reversal" / "tearsheet.html").read_text(encoding="utf-8")
+    html = (tmp_path / "reversal" / "compact_summary.html").read_text(encoding="utf-8")
 
     assert html.startswith("<!doctype html>")
     assert "plotly" in html
